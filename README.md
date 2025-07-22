@@ -42,7 +42,7 @@ A production-ready FastAPI backend for a referral platform with user registratio
 
 ```bash
 git clone <repository-url>
-cd backend
+cd New-Beta-FrontBack
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -70,6 +70,8 @@ Create a `.env` file by copying the example:
 ```bash
 cp .env.example .env
 ```
+
+**For production deployment, see `PRODUCTION_CHECKLIST.md`**
 
 Then edit the `.env` file with your configuration:
 

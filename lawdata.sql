@@ -13,8 +13,8 @@ SET SQL_SAFE_UPDATES = 0;
 --              feedback system, and user management.
 --
 -- ADMIN LOGIN CREDENTIALS:
--- Email: admin@lawvriksh.com
--- Password: admin123
+-- Email: sahilsaurav2507@gmail.com
+-- Password: Sahil@123
 --
 -- FEATURES INCLUDED:
 -- 1. User Management with Admin Support
@@ -131,14 +131,13 @@ CREATE TABLE feedback (
 -- SAMPLE DATA
 -- =====================================================
 -- ADMIN LOGIN CREDENTIALS:
--- Email: admin@lawvriksh.com
--- Password: admin123
+-- Email: sahilsaurav2507@gmail.com
+-- Password: Sahil@123
 --
 -- Regular users password: password123
 INSERT INTO users (name, email, password_hash, is_active, is_admin) VALUES
 ('John Doe', 'john@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J/HS.i8eO', TRUE, FALSE),
 ('Jane Smith', 'jane@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J/HS.i8eO', TRUE, FALSE),
-('Admin User', 'admin@lawvriksh.com', '$2b$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', TRUE, TRUE),
 ('Mike Johnson', 'mike@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J/HS.i8eO', TRUE, FALSE),
 ('Sarah Wilson', 'sarah@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J/HS.i8eO', TRUE, FALSE);
 
@@ -458,12 +457,12 @@ CALL sp_UpdateUserRanks();
 -- This section ensures admin login works correctly
 -- by updating/creating the admin user with the right hash
 
--- First, remove any existing admin user to avoid conflicts
-DELETE FROM users WHERE email = 'admin@lawvriksh.com';
+-- First, remove any existing admin users to avoid conflicts
+DELETE FROM users WHERE is_admin = TRUE;
 
--- Insert admin user with correct bcrypt hash for 'admin123'
+-- Insert new admin user with correct bcrypt hash for 'Sahil@123'
 INSERT INTO users (name, email, password_hash, is_admin, is_active, total_points, shares_count, default_rank, current_rank)
-VALUES ('Admin User', 'admin@lawvriksh.com', '$2b$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', TRUE, TRUE, 0, 0, NULL, NULL);
+VALUES ('Sahil Saurav', 'sahilsaurav2507@gmail.com', '$2b$12$mRprhtfIqg5YSZyDPl/NoeG410VYE5ZF0.SdhznSZ9are28RAWcuC', TRUE, TRUE, 0, 0, NULL, NULL);
 
 -- Verify admin user was created correctly
 SELECT 'ADMIN USER CREATED SUCCESSFULLY!' as status;
@@ -473,10 +472,10 @@ SELECT
     email,
     is_admin,
     is_active,
-    'Email:admin@lawvriksh.com' as login_email,
-    'Password:admin123' as login_password
+    'Email:sahilsaurav2507@gmail.com' as login_email,
+    'Password:Sahil@123' as login_password
 FROM users
-WHERE email = 'admin@lawvriksh.com';
+WHERE email = 'sahilsaurav2507@gmail.com';
 
 -- Verify table creation and data
 SELECT 'Database setup completed successfully!' as status;
@@ -498,12 +497,12 @@ SELECT
     is_active,
     created_at,
     CASE
-        WHEN password_hash = '$2b$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+        WHEN password_hash = '$2b$12$mRprhtfIqg5YSZyDPl/NoeG410VYE5ZF0.SdhznSZ9are28RAWcuC'
         THEN '✅ CORRECT PASSWORD HASH'
         ELSE '❌ WRONG PASSWORD HASH'
     END as password_status
 FROM users
-WHERE email = 'admin@lawvriksh.com';
+WHERE email = 'sahilsaurav2507@gmail.com';
 
 -- Show all admin users for verification
 SELECT 'All Admin Users:' as section;
@@ -512,8 +511,8 @@ SELECT id, name, email, is_admin, is_active FROM users WHERE is_admin = TRUE;
 -- Final confirmation message
 SELECT
     '🎉 ADMIN SETUP COMPLETE!' as message,
-    'admin@lawvriksh.com' as email,
-    'admin123' as password,
+    'sahilsaurav2507@gmail.com' as email,
+    'Sahil@123' as password,
     'Use these credentials to login' as instruction;
 
 -- Display sample analytics
@@ -538,8 +537,8 @@ SET SQL_SAFE_UPDATES = 1;
 -- =====================================================
 -- 🔑 ADMIN LOGIN CREDENTIALS - GUARANTEED TO WORK
 -- =====================================================
--- Email: admin@lawvriksh.com
--- Password: admin123
+-- Email: sahilsaurav2507@gmail.com
+-- Password: Sahil@123
 --
 -- This script now includes a dedicated admin fix section
 -- that deletes and recreates the admin user with the
