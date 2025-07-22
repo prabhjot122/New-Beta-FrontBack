@@ -1,0 +1,500 @@
+.admin-dashboard {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Header */
+.admin-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-header h1 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 1.8rem;
+  margin: 0;
+  color: #d4af37;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout-btn {
+  background: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #f4d03f;
+  transform: translateY(-1px);
+}
+
+/* Navigation */
+.admin-nav {
+  background: white;
+  border-bottom: 2px solid #d4af37;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-nav button {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.admin-nav button:hover {
+  background-color: #f9f9f9;
+}
+
+.admin-nav button.active {
+  border-bottom-color: #d4af37;
+  background-color: #fafafa;
+}
+
+/* Main Content */
+.admin-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Overview Section */
+.overview-section h2 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #d4af37;
+}
+
+.stat-card h3 {
+  font-family: 'Battambang', sans-serif;
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.platform-breakdown {
+  background: white;
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.platform-breakdown h3 {
+  font-family: 'Battambang', sans-serif;
+  margin: 0 0 1.5rem 0;
+  color: #1a1a1a;
+}
+
+.platform-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.platform-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f9f9f9;
+  border-left: 3px solid #d4af37;
+}
+
+.platform-name {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.platform-shares {
+  color: #666;
+}
+
+.platform-percentage {
+  font-weight: 600;
+  color: #d4af37;
+}
+
+/* Users Section */
+.users-section h2 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.users-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-input, .sort-select {
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.search-input:focus, .sort-select:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.export-btn, .promote-btn, .send-email-btn {
+  background: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.export-btn:hover, .promote-btn:hover, .send-email-btn:hover {
+  background: #f4d03f;
+  transform: translateY(-1px);
+}
+
+.users-table-container {
+  background: white;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table th {
+  background: #f9f9f9;
+  font-family: 'Battambang', sans-serif;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.users-table tr:hover {
+  background: #fafafa;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.active {
+  background: #e8f5e8;
+  color: #2d5a2d;
+}
+
+.status.inactive {
+  background: #fee;
+  color: #c33;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:not(:disabled):hover {
+  background: #f4d03f;
+}
+
+/* Email Section */
+.email-section h2 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.email-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.email-info {
+  margin-top: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.email-error {
+  margin-top: 1rem;
+  color: #e74c3c;
+  font-weight: 600;
+  padding: 10px;
+  background: #fdf2f2;
+  border: 1px solid #e74c3c;
+  border-radius: 0;
+}
+
+.email-success {
+  margin-top: 1rem;
+  color: #27ae60;
+  font-weight: 600;
+  padding: 10px;
+  background: #f0f9f0;
+  border: 1px solid #27ae60;
+  border-radius: 0;
+}
+
+/* Analytics Section */
+.analytics-section h2 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.analytics-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #d4af37;
+}
+
+.analytics-card h3 {
+  font-family: 'Battambang', sans-serif;
+  margin: 0 0 1.5rem 0;
+  color: #1a1a1a;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.metric-item:last-child {
+  border-bottom: none;
+}
+
+.metric-item span:last-child {
+  font-weight: 600;
+  color: #d4af37;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 1rem;
+  }
+  
+  .admin-header-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .admin-nav {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .admin-main {
+    padding: 1rem;
+  }
+  
+  .users-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .users-controls {
+    justify-content: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Settings Section */
+.settings-section {
+  padding: 2rem;
+}
+
+.settings-section h2 {
+  font-family: 'Baskerville Old Face', serif;
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.settings-card h3 {
+  font-family: 'Battambang', sans-serif;
+  font-size: 1.25rem;
+  color: #374151;
+  padding: 1.5rem 1.5rem 0;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .settings-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}

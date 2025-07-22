@@ -1,0 +1,192 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 16px;
+  left: 67px;
+  right: 67px;
+  z-index: 100;
+  width: calc(100vw - 134px);
+  height: 59px;
+  z-index: 3000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0;
+}
+
+/* Scrolled state with blur effect */
+.navbar--scrolled {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  padding: 15px 67px;
+  background-color: rgba(253, 251, 244, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(150, 111, 51, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar__brand {
+  font-family: 'Baskerville Old Face', 'Times New Roman', serif;
+  font-size: 30px;
+  letter-spacing: -0.05em;
+  line-height: 40px;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+/* Brand styling in scrolled state */
+.navbar--scrolled .navbar__brand {
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.navbar__content {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Content styling in scrolled state */
+.navbar--scrolled .navbar__content {
+  gap: 100px;
+}
+
+/* Ensure button aligns properly with nav links */
+.navbar__content .button {
+  height: auto;
+  min-height: 40px;
+  padding: 12px 24px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* Button styling in scrolled state */
+.navbar--scrolled .navbar__content .button {
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 18px;
+  min-height: 36px;
+}
+
+.navbar__nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar__nav-link {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar__nav-link:hover {
+  color: #966F33;
+}
+
+.navbar__nav-separator {
+  color: black;
+  margin: 0 8px;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Navigation styling in scrolled state */
+.navbar--scrolled .navbar__nav {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.navbar--scrolled .navbar__nav-link {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar--scrolled .navbar__nav-link:hover {
+  color: #966F33;
+}
+
+.navbar--scrolled .navbar__nav-separator {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    left: 0;
+    top: 20px;
+    right: 0;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: calc(100vw - 40px);
+    height: auto;
+  }
+
+  .navbar--scrolled {
+    top: 0;
+    padding: 15px 20px;
+  }
+
+  .navbar__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar--scrolled .navbar__content {
+    gap: 15px;
+  }
+
+  .navbar__nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .navbar__nav-separator {
+    margin: 0 4px;
+  }
+
+  .navbar__brand {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .navbar--scrolled .navbar__brand {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar__content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navbar--scrolled .navbar__content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

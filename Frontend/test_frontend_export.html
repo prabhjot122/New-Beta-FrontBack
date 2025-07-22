@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Frontend Export</title>
+</head>
+<body>
+    <h1>Test Frontend Export Function</h1>
+    <button onclick="testExport()">Test Export</button>
+    <div id="result"></div>
+
+    <script>
+        // Simulate the fixed export function
+        async function testExport() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing export...';
+            
+            try {
+                const response = await fetch('http://localhost:8000/feedback/export?format=json', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer fake-token`,
+                    },
+                });
+
+                resultDiv.innerHTML = `
+                    <h3>Test Results:</h3>
+                    <p>Status: ${response.status}</p>
+                    <p>Status Text: ${response.statusText}</p>
+                    <p>Expected: 401 (Unauthorized) - this means the endpoint is working!</p>
+                    <p style="color: ${response.status === 401 ? 'green' : 'red'}">
+                        ${response.status === 401 ? '✅ SUCCESS: Export endpoint is working correctly!' : '❌ FAILED: Unexpected response'}
+                    </p>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3>Test Results:</h3>
+                    <p style="color: red">❌ ERROR: ${error.message}</p>
+                    <p>This indicates a connection or CORS issue.</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

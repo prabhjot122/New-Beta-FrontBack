@@ -1,0 +1,1285 @@
+/* Mobile Homepage Styles */
+.homepage-mobile {
+  background-color: #FBFBF9;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* Enhanced Mobile CTA Section Styles */
+.homepage-mobile .homepage__cta-animated-section {
+  height: auto;
+  max-height: 40vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+              url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Enhanced mobile CTA container with improved hierarchy */
+.homepage-mobile .homepage__cta-animated-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  width: 100%;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.homepage-mobile .homepage__cta-animated-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* Enhanced mobile CTA content with improved typography */
+.homepage-mobile .homepage__cta-animated-content {
+  position: relative;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.homepage-mobile .homepage__cta-animated-text {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  font-size: clamp(1.125rem, 4.5vw, 1.375rem);
+  line-height: 1.6;
+  color: #ffffff;
+  padding: 1.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.homepage-mobile .homepage__cta-animated-text.active {
+  opacity: 1;
+}
+
+/* Professional mobile CTA button with enhanced styling */
+.homepage-mobile .homepage__cta-animated-button {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  background: linear-gradient(135deg, #966f33 0%, #8a6330 100%);
+  cursor: pointer;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-size: clamp(16px, 4vw, 18px);
+  letter-spacing: 0.05em;
+  color: white;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.homepage-mobile .homepage__cta-animated-button:hover {
+  background: linear-gradient(135deg, #8a6330 0%, #7a5a2d 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.homepage-mobile .homepage__cta-animated-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced mobile CTA button wrapper for improved layout */
+.homepage-mobile .homepage__cta-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+/* Enhanced button text styling */
+.homepage-mobile .homepage__cta-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.homepage-mobile .homepage__cta-button-arrow {
+  position: relative;
+  z-index: 2;
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.homepage-mobile .homepage__cta-animated-button:hover .homepage__cta-button-arrow {
+  transform: translateX(4px);
+}
+
+/* Mobile CTA button accent line */
+.homepage-mobile .homepage__cta-button-accent {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #966f33 50%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* Mobile CTA decorative elements */
+.homepage-mobile .homepage__cta-mobile-decorative {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.3;
+}
+
+.homepage-mobile .homepage__cta-decorative-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
+}
+
+/* Mobile-specific navbar overrides */
+.homepage-mobile .navbar {
+  flex-direction: row !important;
+  gap: 0 !important;
+  height: 59px !important;
+  padding: 20px !important;
+  width: 100vw !important;
+}
+
+.homepage-mobile .navbar__content {
+  flex-direction: row !important;
+  gap: 20px !important;
+  justify-content: flex-end !important;
+}
+
+.homepage-mobile .navbar__nav {
+  display: none !important; /* Hide navigation links on mobile for cleaner look */
+}
+
+.homepage-mobile .navbar__brand {
+  font-size: 28px !important;
+  text-align: left !important;
+}
+
+/* Hero Section */
+.homepage-mobile__hero {
+  padding: 80px 20px 40px 20px;
+  background-color: #FDFBF4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.homepage-mobile__hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 100%;
+}
+
+.homepage-mobile__hero-title {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  font-size: clamp(36px, 8vw, 70px);
+  line-height: 1.1;
+  color: #5D4037;
+  font-weight: normal;
+  margin-top: 60px;
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+.homepage-mobile__features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  
+}
+
+.homepage-mobile__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px;
+  margin: -12px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.homepage-mobile__feature-item:hover {
+  background-color: rgba(150, 111, 51, 0.1);
+  transform: translateY(-2px);
+}
+
+.homepage-mobile__feature-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.homepage-mobile__feature-content {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.homepage-mobile__feature-title {
+  font-family: "Battambang", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #966f33;
+ 
+  letter-spacing: -0.05em;
+}
+
+.homepage-mobile__feature-description {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+  color: #000000;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+.homepage-mobile__hero-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  
+  background-color: #FFF8E4;
+  padding-top: 20px;
+}
+
+.homepage-mobile__hero-subtitle {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  font-size: 20px;
+  color: #b99c6d;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+/* Button will use existing Button component styles */
+
+/* Content Creation Section */
+.homepage-mobile__content-section {
+  background-color: #FFF8E4;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-height: 100vh;
+  justify-content: flex-start;
+}
+
+.homepage-mobile__feature-image {
+  background-image: url("/feature1.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 4px 47.7px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  
+  max-width: 400px;
+  
+  height: 300px;
+  flex-shrink: 0;
+}
+
+.homepage-mobile__content-text {
+  text-align: left;
+  padding: 20px 20px 120px 20px;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.homepage-mobile__feature-content-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  z-index: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.homepage-mobile__feature-content-item:first-child {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.homepage-mobile__feature-content-item.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.homepage-mobile__section-title {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  font-size: clamp(32px, 8vw, 40px);
+  font-weight: 400;
+  color: #3c1f13;
+  
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.homepage-mobile__content-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.homepage-mobile__content-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.homepage-mobile__content-icon {
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.homepage-mobile__content-description {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  color: #3c1f13;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+/* Desktop testimonials section will be used - no mobile-specific styles needed */
+
+/* Team Section - Redesigned */
+.homepage-mobile__team {
+  background-color: #FFF8E4;
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.homepage-mobile__team-content {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.homepage-mobile__team-title {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  font-size: clamp(28px, 6vw, 36px);
+  color: #966f33;
+  margin: 0 0 40px 0;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.homepage-mobile__team-card {
+  background: #FDFBF4;
+  
+  padding: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(150, 111, 51, 0.1);
+}
+
+.homepage-mobile__team-image-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.homepage-mobile__team-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  
+  aspect-ratio: 16/9;
+}
+
+.homepage-mobile__team-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 20px 15px 15px;
+  
+}
+
+.homepage-mobile__team-label {
+  font-family: "Battambang", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.homepage-mobile__team-quote {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.homepage-mobile__quote-mark {
+  font-family: "Baskerville Old Face", serif;
+  font-size: 48px;
+  color: #966f33;
+  line-height: 1;
+  margin-bottom: 15px;
+  display: block;
+  opacity: 0.8;
+}
+
+.homepage-mobile__team-text {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  color: #3e3e3e;
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.homepage-mobile__team-rating {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(150, 111, 51, 0.1);
+  text-align: center;
+}
+
+.homepage-mobile__stars {
+  margin-bottom: 8px;
+}
+
+.homepage-mobile__star {
+  font-size: 20px;
+  color: #966f33;
+  margin: 0 2px;
+}
+
+.homepage-mobile__rating-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .homepage-mobile__hero-title {
+    font-size: 40px;
+  }
+
+  .homepage-mobile__section-title {
+    font-size: 25px;
+  }
+
+  .homepage-mobile__testimonials-title,
+  .homepage-mobile__team-title {
+    font-size: 35px;
+  }
+
+  .homepage-mobile__hero {
+    padding: 60px 15px 30px 15px;
+  }
+
+  
+  .homepage-mobile__testimonials,
+  .homepage-mobile__team {
+    padding: 40px 15px;
+  }
+  .homepage-mobile__content-section{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom:200px;
+    justify-content: center;
+  }
+
+  .homepage-mobile__feature-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .homepage-mobile__icon-item {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .homepage-mobile__team-image {
+    width: 180px;
+    height: 240px;
+  }
+}
+
+/* Ensure smooth scrolling */
+.homepage-mobile {
+  scroll-behavior: smooth;
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .homepage-mobile__team-arrow:hover {
+    background-color: transparent;
+    color: #3e3e3e;
+  }
+
+  .homepage-mobile button:hover {
+    background-color: #8B4513;
+    transform: none;
+  }
+}
+
+/* Accessibility improvements */
+.homepage-mobile button:focus,
+.homepage-mobile__team-arrow:focus {
+  outline: 2px solid #8B4513;
+  outline-offset: 2px;
+}
+
+/* Mobile-specific divider styling - slimmer than desktop */
+.homepage-mobile .homepage__divider-strip {
+  height: 50px; /* 30-40% smaller than desktop 80px */
+}
+
+.homepage-mobile .homepage__divider-content {
+  gap: 25px;
+}
+
+.homepage-mobile .homepage__divider-dot {
+  width: 6px;
+  height: 6px;
+}
+
+/* Ensure proper spacing between sections */
+.homepage-mobile section + section {
+  margin-top: 0;
+}
+
+/* Fix any potential overflow issues */
+.homepage-mobile * {
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  
+
+ 
+
+  .homepage-mobile__team-title {
+    font-size: 45px;
+    padding-bottom: 30px;
+  }
+
+  .homepage-mobile__hero {
+    padding: 60px 15px 30px 15px;
+  }
+
+  
+  .homepage-mobile__team {
+    padding: 40px 15px;
+  }
+
+  .homepage-mobile__feature-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .homepage-mobile__team-card {
+    padding: 20px 15px;
+  }
+
+  .homepage-mobile__team-image {
+    height: 160px;
+  }
+
+  .homepage-mobile__team-label {
+    font-size: 14px;
+  }
+
+  .homepage-mobile__team-text {
+    font-size: 15px;
+  }
+
+  .homepage-mobile__quote-mark {
+    font-size: 40px;
+  }
+
+  .homepage-mobile__star {
+    font-size: 18px;
+  }
+
+  .homepage-mobile__rating-text {
+    font-size: 11px;
+  }
+}
+
+/* Hover Dialog Styles */
+.homepage-mobile__hover-dialog {
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid #966f33;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  max-width: 350px;
+  min-width: 280px;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.homepage-mobile__dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.homepage-mobile__dialog-title {
+  font-family: "Battambang", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #966f33;
+  margin: 0;
+  text-align: center;
+  border-bottom: 1px solid #966f33;
+  padding-bottom: 10px;
+}
+
+.homepage-mobile__dialog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homepage-mobile__dialog-item {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  padding: 8px 12px;
+  background-color: rgba(251, 251, 249, 0.8);
+  border-radius: 6px;
+  border-left: 3px solid #966f33;
+  position: relative;
+}
+
+.homepage-mobile__dialog-item:before {
+  content: "•";
+  color: #966f33;
+  font-weight: bold;
+  position: absolute;
+  left: -8px;
+  top: 8px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%) translateY(0);
+  }
+}
+
+/* Mobile responsive adjustments for dialog */
+@media (max-width: 480px) {
+  .homepage-mobile__hover-dialog {
+    max-width: 280px;
+    min-width: 250px;
+    padding: 16px;
+  }
+
+  .homepage-mobile__dialog-title {
+    font-size: 16px;
+  }
+
+  .homepage-mobile__dialog-item {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile Founding Member Perks Section Styles */
+.homepage-mobile .founding-member-perks-section {
+  background: linear-gradient(135deg, #FDFBF4 0%, #FFF8E4 50%, #FDFBF4 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.homepage-mobile .founding-member-perks-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(150, 111, 51, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(150, 111, 51, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.homepage-mobile .founding-member-perks__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.homepage-mobile .founding-member-perks__title {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  color: #966f33;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: clamp(2rem, 6vw, 3rem);
+  letter-spacing: -0.025em;
+}
+
+.homepage-mobile .founding-member-perks__content {
+  position: relative;
+  min-height: clamp(350px, 50vh, 500px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-mobile .founding-member-perks__content-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.homepage-mobile .founding-member-perks__perk-title {
+  font-family: "Baskerville Old Face", "Times New Roman", serif;
+  color: #3c1f13;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.homepage-mobile .founding-member-perks__perk-description {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #333;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  max-width: 100%;
+}
+
+/* Mobile-specific scroll progress indicator positioning */
+.homepage-mobile .founding-member-perks-section .scroll-progress-indicator {
+  position: fixed;
+  bottom: 2rem;
+  right: 50%;
+  transform: translateX(50%);
+  top: auto;
+}
+
+.homepage-mobile .founding-member-perks-section .scroll-progress-container {
+  flex-direction: row;
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
+  border-radius: 2rem;
+}
+
+.homepage-mobile .founding-member-perks-section .scroll-progress-circle {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Animation effects for mobile perk transitions */
+.homepage-mobile .founding-member-perks__content-item:hover .founding-member-perks__perk-title {
+  color: #966f33;
+  transform: translateY(-2px);
+}
+
+.homepage-mobile .founding-member-perks__content-item:hover .founding-member-perks__perk-description {
+  color: #2c2c2c;
+}
+
+/* Very small screen adjustments */
+@media (max-width: 480px) {
+  .homepage-mobile .founding-member-perks-section {
+    padding: 30px 15px;
+  }
+
+  .homepage-mobile .founding-member-perks__title {
+    font-size: 45px;
+    margin-bottom: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .homepage-mobile .founding-member-perks__content {
+    min-height: clamp(300px, 45vh, 400px);
+  }
+
+  .homepage-mobile .founding-member-perks__content-item {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .homepage-mobile .founding-member-perks__perk-title {
+    font-size: 30px;
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .homepage-mobile .founding-member-perks__perk-description {
+    font-size: 20px
+  }
+}
+
+/* Mobile-specific testimonial enhancements */
+@media (max-width: 767px) {
+  .homepage__testimonials-scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(93, 64, 55, 0.95);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    width: fit-content;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    pointer-events: none; /* Allow clicks to pass through to parent */
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .homepage__testimonials-scroll-text {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+  }
+
+  .homepage__testimonials-person-info {
+
+    padding: 1.5rem;
+    margin: 1rem;
+    backdrop-filter: blur(5px);
+    
+  }
+
+  .homepage__testimonials-person-name {
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .homepage__testimonials-person-credentials {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .homepage__testimonials-quote-box {
+    
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+  }
+
+  .homepage__testimonials-quote-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* Touch-friendly testimonial image */
+  .testimonialimage {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    touch-action: manipulation;
+  }
+
+  .testimonialimage:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  .testimonialimage:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .testimonialimage:focus {
+    outline: 3px solid #d4af37;
+    outline-offset: 4px;
+  }
+}
+
+/* Enhanced feature item interactions for smooth scrolling */
+.homepage-mobile__feature-item {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.homepage-mobile__feature-item:hover,
+.homepage-mobile__feature-item:focus {
+  background-color: rgba(93, 64, 55, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.homepage-mobile__feature-item:active {
+  transform: translateY(0);
+  background-color: rgba(93, 64, 55, 0.1);
+}
+
+.homepage-mobile__feature-item:focus-visible {
+  outline: 2px solid #5d4037;
+  outline-offset: 2px;
+}
+
+/* Enhanced Mobile Testimonials Section Styles - Card Design */
+.homepage-mobile__testimonials-section {
+  background: linear-gradient(135deg, #FDFBF4 0%, #FFF8E4 50%, #FDFBF4 100%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-mobile__testimonials-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 2rem;
+}
+
+.homepage-mobile__testimonials-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.homepage-mobile__testimonials-title {
+  font-family: "Baskerville Old Face", serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: #966f33;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.homepage-mobile__testimonials-subtitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  font-size: clamp(0.85rem, 3vw, 0.95rem);
+  color: #71717a;
+  line-height: 1.4;
+}
+
+/* Testimonial Card Design */
+.homepage-mobile__testimonial-card {
+  background: #FFFFFF;
+  border-radius: 0; /* Sharp rectangular corners as per user preference */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  max-width: 350px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Profile image container */
+.homepage-mobile__testimonial-image-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #FFF8E4 0%, #FFF8E4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.homepage-mobile__testimonial-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 0%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.homepage-mobile__testimonial-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.homepage-mobile__testimonial-image:active {
+  transform: scale(0.98);
+}
+
+/* Tap indicator */
+.homepage-mobile__tap-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-family: "Source Sans Pro", sans-serif;
+  backdrop-filter: blur(10px);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.homepage-mobile__tap-text {
+  white-space: nowrap;
+}
+
+/* Card content section */
+.homepage-mobile__card-content {
+  padding: 2rem 1.5rem;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Person info section */
+.homepage-mobile__person-info {
+  text-align: center;
+}
+
+.homepage-mobile__person-name {
+  font-family: "Baskerville Old Face", serif;
+  font-size: clamp(1.25rem, 4vw, 1.4rem);
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.homepage-mobile__person-credentials {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+  color: #966f33;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Quote section */
+.homepage-mobile__quote-section {
+  position: relative;
+}
+
+.homepage-mobile__quote-text {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  line-height: 1.6;
+  color: #666666;
+  text-align: left;
+  position: relative;
+  padding: 0;
+}
+
+/* Navigation indicators */
+.homepage-mobile__indicators {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.homepage-mobile__person-dots,
+.homepage-mobile__quote-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.homepage-mobile__person-dot,
+.homepage-mobile__quote-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(150, 111, 51, 0.3);
+  transition: all 0.3s ease;
+}
+
+.homepage-mobile__person-dot.active {
+  background: #966f33;
+  transform: scale(1.3);
+}
+
+.homepage-mobile__quote-dot.active {
+  background: #966f33;
+  transform: scale(1.3);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .homepage-mobile__testimonials-container {
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .homepage-mobile__testimonial-image {
+    width: 240px;
+    height: 280px;
+  }
+
+  .homepage-mobile__testimonials-text-content {
+    padding: var(--space-lg);
+  }
+
+  .homepage-mobile__testimonials-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .homepage-mobile__person-name {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
+  }
+
+  .homepage-mobile__quote-text {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+}
+
+/* Mobile Hero Quote Styling */
+.homepage-mobile__hero-quote {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.5;
+  color: #966f33;
+  text-align: center;
+  
+  padding: 0 1rem;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.4s ease;
+}
+
+/* Responsive adjustments for hero quote */
+@media (max-width: 480px) {
+  .homepage-mobile__hero-quote {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    
+    padding: 0 0.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .homepage-mobile__hero-quote {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    margin: 1.75rem 0;
+  }
+}
