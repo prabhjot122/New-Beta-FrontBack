@@ -157,21 +157,41 @@ test_beta_registration() {
 test_admin_setup() {
     log "Testing admin setup..."
 
-    # Run admin verification script
-    if docker-compose exec -T backend python verify_admin.py > /dev/null 2>&1; then
-        test_passed "Admin user verification"
-    else
-        test_failed "Admin user verification failed"
-    fi
-
     # Test admin login endpoint
-    local admin_login_response=$(curl -s -X POST http://localhost:8000/auth/login \
+    local admin_login_response=$(curl -s -X POST http://localhost:8000/admin/login \
         -H "Content-Type: application/json" \
         -d '{"email":"sahilsaurav2507@gmail.com","password":"Sahil@123"}' \
         -w "%{http_code}")
 
     if [[ "$admin_login_response" == *"200"* ]]; then
         test_passed "Admin login endpoint"
+
+        # Extract token for further tests
+        local admin_token=$(echo "$admin_login_response" | grep -o '"access_token":"[^"]*"' | cut -d'"' -f4)
+
+        if [[ -n "$admin_token" ]]; then
+            # Test admin dashboard
+            local dashboard_response=$(curl -s -H "Authorization: Bearer $admin_token" \
+                http://localhost:8000/admin/dashboard \
+                -w "%{http_code}")
+
+            if [[ "$dashboard_response" == *"200"* ]]; then
+                test_passed "Admin dashboard API"
+            else
+                test_failed "Admin dashboard API failed"
+            fi
+
+            # Test admin users endpoint
+            local users_response=$(curl -s -H "Authorization: Bearer $admin_token" \
+                http://localhost:8000/admin/users \
+                -w "%{http_code}")
+
+            if [[ "$users_response" == *"200"* ]]; then
+                test_passed "Admin users management API"
+            else
+                test_failed "Admin users management API failed"
+            fi
+        fi
     else
         test_failed "Admin login endpoint failed"
     fi
