@@ -313,7 +313,7 @@ server {
     gzip_min_length 1024;
     gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
 
-    # Frontend (React)
+    # Frontend (React) - Serve static files from Docker container
     location / {
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
@@ -324,6 +324,18 @@ server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_cache_bypass \$http_upgrade;
+
+        # Handle React Router (SPA)
+        try_files \$uri \$uri/ @fallback;
+    }
+
+    # Fallback for React Router
+    location @fallback {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
     }
 
     # Backend API
@@ -391,6 +403,42 @@ setup_environment() {
     success "Environment setup completed"
 }
 
+# Setup admin user
+setup_admin_user() {
+    log "Setting up admin user from environment variables..."
+
+    # Wait for database to be ready
+    log "Waiting for database to be ready..."
+    sleep 10
+
+    # Run admin setup script
+    if [[ -f "setup_admin.py" ]]; then
+        log "Running admin setup script..."
+        docker-compose exec -T backend python setup_admin.py
+        if [[ $? -eq 0 ]]; then
+            success "Admin user setup completed successfully"
+            info "Admin credentials:"
+            echo "  📧 Email: sahilsaurav2507@gmail.com"
+            echo "  🔑 Password: Sahil@123"
+        else
+            warning "Admin setup script failed, but continuing deployment..."
+        fi
+    else
+        warning "setup_admin.py not found, skipping admin setup"
+    fi
+
+    # Run database initialization if init_db.py exists
+    if [[ -f "init_db.py" ]]; then
+        log "Running database initialization..."
+        docker-compose exec -T backend python init_db.py
+        if [[ $? -eq 0 ]]; then
+            success "Database initialization completed"
+        else
+            warning "Database initialization failed, but continuing..."
+        fi
+    fi
+}
+
 # Deploy application
 deploy_application() {
     log "Deploying LawVriksh application..."
@@ -406,6 +454,9 @@ deploy_application() {
 
     # Check service health
     check_service_health
+
+    # Setup admin user
+    setup_admin_user
 
     success "Application deployed successfully"
 }

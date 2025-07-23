@@ -2,7 +2,7 @@ import os
 import logging
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback
+from app.api import auth, users, shares, leaderboard, admin, campaigns, feedback, beta
 from app.utils.monitoring import prometheus_middleware, prometheus_endpoint
 from app.core.error_handlers import setup_error_handlers, RateLimitError
 from app.core.config import settings
@@ -91,7 +91,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         settings.FRONTEND_URL,
-        "http://localhost:3000",
+        "https://lawvriksh.com",  # Production frontend
+        "https://www.lawvriksh.com",  # Production frontend with www
+        "http://localhost:3000",  # Local development
         "http://127.0.0.1:3000",
         "http://localhost:3001",  # Add support for port 3001
         "http://127.0.0.1:3001"
@@ -106,6 +108,7 @@ prometheus_middleware(app)
 
 # Routers
 app.include_router(auth.router)
+app.include_router(beta.router)  # Beta user registration
 app.include_router(users.router)
 app.include_router(shares.router)
 app.include_router(leaderboard.router)

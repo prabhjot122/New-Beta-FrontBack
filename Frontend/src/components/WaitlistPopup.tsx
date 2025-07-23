@@ -5,6 +5,7 @@ import Button from './Button';
 // import LoadingSpinner from './LoadingSpinner';
 import ErrorMessage from './ErrorMessage';
 import { authService } from '../services/authService';
+import { betaService } from '../services/betaService';
 import { useApiState } from '../hooks/useApiState';
 import './WaitlistPopup.css';
 
@@ -81,41 +82,28 @@ export default function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      const tempPassword = 'temp-password-' + Date.now(); // Temporary password for waitlist
+    // Validate form data using beta service
+    const validation = betaService.validateBetaUserInput(formData);
+    if (!validation.isValid) {
+      console.error('Validation errors:', validation.errors);
+      return;
+    }
 
-      // Step 1: Sign up the user
+    try {
+      // Use beta service for registration (name + email only)
       const result = await executeSignup(() =>
-        authService.signup({
-          name: formData.name,
-          email: formData.email,
-          password: tempPassword
+        betaService.registerBetaUser({
+          name: formData.name.trim(),
+          email: formData.email.trim()
         })
       );
 
       if (result) {
-        console.log('✅ Signup successful, now logging in user...');
+        console.log('✅ Beta registration successful:', result.message);
+        console.log('🎉 Welcome beta user:', result.name);
 
-        // Step 2: Automatically log in the user after successful signup
-        try {
-          const loginResult = await authService.login({
-            email: formData.email,
-            password: tempPassword
-          });
-          console.log('✅ Auto-login successful after signup');
-          console.log('🎫 Login result:', loginResult);
-
-          // Verify authentication
-          const isAuthenticated = authService.isAuthenticated();
-          console.log('🔐 User authenticated after login:', isAuthenticated);
-
-          if (!isAuthenticated) {
-            console.error('❌ User not authenticated despite successful login');
-          }
-        } catch (loginError) {
-          console.error('❌ Auto-login failed after signup:', loginError);
-          // Continue anyway, user can manually log in later
-        }
+        // Beta users don't need to login immediately
+        // They will receive login credentials via email
 
         setIsSubmitted(true);
 

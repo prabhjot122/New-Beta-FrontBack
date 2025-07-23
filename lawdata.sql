@@ -460,9 +460,9 @@ CALL sp_UpdateUserRanks();
 -- First, remove any existing admin users to avoid conflicts
 DELETE FROM users WHERE is_admin = TRUE;
 
--- Insert new admin user with correct bcrypt hash for 'Sahil@123'
+-- Insert new admin user with correct bcrypt hash for 'Sahil@123' (generated from .env file)
 INSERT INTO users (name, email, password_hash, is_admin, is_active, total_points, shares_count, default_rank, current_rank)
-VALUES ('Sahil Saurav', 'sahilsaurav2507@gmail.com', '$2b$12$mRprhtfIqg5YSZyDPl/NoeG410VYE5ZF0.SdhznSZ9are28RAWcuC', TRUE, TRUE, 0, 0, NULL, NULL);
+VALUES ('Sahil Saurav', 'sahilsaurav2507@gmail.com', '$2b$12$nRFTpXbD6zQhvbBCDFyiCu4S6nDTE9pwGTmecujnrGWy0B47.PMuu', TRUE, TRUE, 0, 0, NULL, NULL);
 
 -- Verify admin user was created correctly
 SELECT 'ADMIN USER CREATED SUCCESSFULLY!' as status;
@@ -497,8 +497,8 @@ SELECT
     is_active,
     created_at,
     CASE
-        WHEN password_hash = '$2b$12$mRprhtfIqg5YSZyDPl/NoeG410VYE5ZF0.SdhznSZ9are28RAWcuC'
-        THEN '✅ CORRECT PASSWORD HASH'
+        WHEN password_hash = '$2b$12$nRFTpXbD6zQhvbBCDFyiCu4S6nDTE9pwGTmecujnrGWy0B47.PMuu'
+        THEN '✅ CORRECT PASSWORD HASH (from .env file)'
         ELSE '❌ WRONG PASSWORD HASH'
     END as password_status
 FROM users

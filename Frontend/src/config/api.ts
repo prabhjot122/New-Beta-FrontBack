@@ -115,6 +115,13 @@ export const API_ENDPOINTS = {
     EXPORT: '/feedback/export',
   },
   
+  // Beta User Registration
+  BETA: {
+    SIGNUP: '/beta/signup',
+    STATS: '/beta/stats',
+    HEALTH: '/beta/health',
+  },
+
   // System
   SYSTEM: {
     HEALTH: '/health',

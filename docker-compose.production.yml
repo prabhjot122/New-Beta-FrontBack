@@ -123,6 +123,10 @@ services:
       
       # Security Headers
       ALLOWED_HOSTS: ${DOMAIN},www.${DOMAIN}
+
+      # Admin Configuration
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       
     volumes:
       - ./cache:/app/cache

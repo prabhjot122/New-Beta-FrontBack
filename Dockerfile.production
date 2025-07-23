@@ -55,6 +55,9 @@ WORKDIR /app
 # Copy application code
 COPY --chown=lawvriksh:lawvriksh . .
 
+# Ensure admin setup scripts are executable
+RUN chmod +x *.py 2>/dev/null || true
+
 # Create necessary directories
 RUN mkdir -p /app/logs /app/cache /app/uploads \
     && chown -R lawvriksh:lawvriksh /app
