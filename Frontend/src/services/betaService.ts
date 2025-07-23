@@ -116,9 +116,11 @@ class BetaService {
     const response = await withErrorHandling(() =>
       apiClient.post<BetaUserResponse>(API_ENDPOINTS.BETA.SIGNUP, userData)
     );
-    
-    console.log('✅ Beta registration successful:', response.email);
-    return response;
+
+    // Extract data from ApiResponse
+    const userData_response = response.data || response as any;
+    console.log('✅ Beta registration successful:', userData_response.email);
+    return userData_response;
   }
   
   /**
@@ -137,9 +139,11 @@ class BetaService {
     const response = await withErrorHandling(() =>
       apiClient.get<BetaStats>(API_ENDPOINTS.BETA.STATS)
     );
-    
-    console.log('✅ Beta stats retrieved:', response);
-    return response;
+
+    // Extract data from ApiResponse
+    const statsData = response.data || response as any;
+    console.log('✅ Beta stats retrieved:', statsData);
+    return statsData;
   }
   
   /**
@@ -162,9 +166,11 @@ class BetaService {
     const response = await withErrorHandling(() =>
       apiClient.get<{ status: string; service: string; timestamp: string }>(API_ENDPOINTS.BETA.HEALTH)
     );
-    
-    console.log('✅ Beta service health:', response.status);
-    return response;
+
+    // Extract data from ApiResponse
+    const healthData = response.data || response as any;
+    console.log('✅ Beta service health:', healthData.status);
+    return healthData;
   }
   
   /**
@@ -235,6 +241,3 @@ Join the legal revolution at https://lawvriksh.com
 
 // Export singleton instance
 export const betaService = new BetaService();
-
-// Export types
-export type { BetaUserCreate, BetaUserResponse, BetaStats };

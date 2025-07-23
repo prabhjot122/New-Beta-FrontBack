@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import Button from './Button';
 // import LoadingSpinner from './LoadingSpinner';
 import ErrorMessage from './ErrorMessage';
-import { authService } from '../services/authService';
 import { betaService } from '../services/betaService';
 import { useApiState } from '../hooks/useApiState';
 import './WaitlistPopup.css';
