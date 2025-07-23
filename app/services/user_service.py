@@ -30,7 +30,8 @@ def create_user(db: Session, user_in: UserCreate, is_admin: bool = False):
         name=user_in.name,
         email=user_in.email,
         password_hash=hashed_password,
-        is_admin=is_admin
+        is_admin=is_admin,
+        user_type='admin' if is_admin else 'beta'
         # Let database handle created_at with DEFAULT CURRENT_TIMESTAMP
     )
     db.add(user)

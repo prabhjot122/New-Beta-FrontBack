@@ -80,19 +80,17 @@ def beta_signup(user_data: BetaUserCreate, db: Session = Depends(get_db)):
                 detail="Email already registered. If you're already a member, please use the login page."
             )
         
-        # Generate a temporary password for the beta user
-        temp_password = generate_temp_password()
-        password_hash = pwd_context.hash(temp_password)
-        
-        # Create beta user
+        # Create beta user WITHOUT password (password_hash = NULL)
+        # Beta users only provide name + email, no password required
         beta_user = User(
             name=user_data.name.strip(),
             email=user_data.email.lower().strip(),
-            password_hash=password_hash,
+            password_hash=None,  # No password for beta users
             is_active=True,
             is_admin=False,
             total_points=0,
-            shares_count=0
+            shares_count=0,
+            user_type='beta'
         )
         
         # Add to database
