@@ -1,0 +1,126 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: lawvriksh-mysql-final
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Sahil123
+      MYSQL_DATABASE: lawvriksh_referral
+      MYSQL_USER: lawvriksh_user
+      MYSQL_PASSWORD: Sahil123
+    volumes:
+      - mysql_data_final:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    ports:
+      - "127.0.0.1:3307:3306"
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pSahil123"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - lawvriksh-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: lawvriksh-redis-final
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data_final:/data
+    networks:
+      - lawvriksh-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.minimal
+    container_name: lawvriksh-backend-final
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: mysql+pymysql://lawvriksh_user:Sahil123@mysql:3306/lawvriksh_referral
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: lawvriksh_referral
+      DB_USER: lawvriksh_user
+      DB_PASSWORD: Sahil123
+      REDIS_URL: redis://redis:6379/0
+      JWT_SECRET_KEY: your_jwt_secret_key_here_change_in_production
+      ADMIN_EMAIL: sahilsaurav2507@gmail.com
+      ADMIN_PASSWORD: Sahil@123
+      ENVIRONMENT: production
+      DEBUG: "false"
+      PYTHONPATH: /app
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - lawvriksh-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  frontend:
+    image: nginx:alpine
+    container_name: lawvriksh-frontend-final
+    restart: unless-stopped
+    volumes:
+      - ./Frontend/dist:/usr/share/nginx/html:ro
+    ports:
+      - "127.0.0.1:3001:80"
+    networks:
+      - lawvriksh-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    command: >
+      sh -c "
+      cat > /etc/nginx/conf.d/default.conf << 'EOF'
+      server {
+          listen 80;
+          server_name localhost;
+          root /usr/share/nginx/html;
+          index index.html index.htm;
+          
+          location / {
+              try_files \$$uri \$$uri/ /index.html;
+          }
+          
+          location /health {
+              return 200 'frontend-healthy';
+              add_header Content-Type text/plain;
+          }
+      }
+      EOF
+      nginx -g 'daemon off;'
+      "
+
+volumes:
+  mysql_data_final:
+  redis_data_final:
+
+networks:
+  lawvriksh-network:
+    driver: bridge
