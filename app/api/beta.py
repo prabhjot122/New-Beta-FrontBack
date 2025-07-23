@@ -80,6 +80,9 @@ def beta_signup(user_data: BetaUserCreate, db: Session = Depends(get_db)):
                 detail="Email already registered. If you're already a member, please use the login page."
             )
         
+        # Generate a temporary password for beta users (for email purposes only)
+        temp_password = generate_temp_password()
+
         # Create beta user WITHOUT password (password_hash = NULL)
         # Beta users only provide name + email, no password required
         beta_user = User(
@@ -92,14 +95,14 @@ def beta_signup(user_data: BetaUserCreate, db: Session = Depends(get_db)):
             shares_count=0,
             user_type='beta'
         )
-        
+
         # Add to database
         db.add(beta_user)
         db.commit()
         db.refresh(beta_user)
-        
+
         logger.info(f"Beta user created successfully: {beta_user.email} (ID: {beta_user.id})")
-        
+
         # Schedule welcome email (if email service is available)
         try:
             from app.tasks.email_tasks import send_beta_welcome_email_task

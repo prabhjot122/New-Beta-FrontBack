@@ -9,12 +9,42 @@ from app.core.config import settings
 import time
 from collections import defaultdict
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+# Configure logging with enhanced format and handlers
+def setup_logging():
+    """Setup comprehensive logging configuration."""
+    log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
+
+    # Create formatter
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s'
+    )
+
+    # Configure root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(getattr(logging, log_level))
+
+    # Clear existing handlers
+    root_logger.handlers.clear()
+
+    # Console handler
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+    root_logger.addHandler(console_handler)
+
+    # File handler for production
+    if os.getenv('ENVIRONMENT') == 'production':
+        try:
+            os.makedirs('logs', exist_ok=True)
+            file_handler = logging.FileHandler('logs/app.log')
+            file_handler.setFormatter(formatter)
+            root_logger.addHandler(file_handler)
+        except Exception as e:
+            print(f"Warning: Could not setup file logging: {e}")
+
+    return logging.getLogger(__name__)
+
+# Setup logging
+logger = setup_logging()
 
 # Create FastAPI app with enhanced metadata
 app = FastAPI(

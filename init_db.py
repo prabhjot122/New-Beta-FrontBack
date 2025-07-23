@@ -94,7 +94,8 @@ def create_admin_user():
             email=admin_email,
             password_hash=pwd_context.hash(admin_password),
             is_admin=True,
-            is_active=True
+            is_active=True,
+            user_type='admin'  # Explicitly set user type for admin
         )
 
         db.add(admin_user)

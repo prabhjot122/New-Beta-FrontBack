@@ -52,19 +52,22 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NULL,  -- NULL for beta users, set for admin users
     total_points INT DEFAULT 0,
     shares_count INT DEFAULT 0,
     default_rank INT NULL,
     current_rank INT NULL,
     is_active BOOLEAN DEFAULT TRUE,
     is_admin BOOLEAN DEFAULT FALSE,
+    user_type VARCHAR(10) DEFAULT 'beta',  -- 'beta' or 'admin'
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_users_email (email),
     INDEX idx_users_total_points (total_points DESC),
     INDEX idx_users_current_rank (current_rank),
     INDEX idx_users_default_rank (default_rank),
+    INDEX idx_users_is_admin (is_admin),
+    INDEX idx_users_user_type (user_type),
     INDEX idx_users_is_admin (is_admin)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

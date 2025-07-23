@@ -26,9 +26,14 @@ class ApiClient {
 
   private async makeRequest<T>(config: ApiRequestConfig): Promise<ApiResponse<T>> {
     const { method, url, data, params, headers = {} } = config;
-    
+
     // Build full URL
     const fullUrl = new URL(url, this.baseURL);
+
+    // Log request details in development
+    if (import.meta.env.DEV) {
+      console.log(`🌐 API ${method} ${fullUrl.toString()}`, { data, params });
+    }
     
     // Add query parameters
     if (params) {
