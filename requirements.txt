@@ -16,5 +16,10 @@ httpx
 pytest
 pytest-asyncio
 requests
-cryptography 
+cryptography
 pytz
+gunicorn
+python-multipart
+jinja2
+aiofiles
+redis
