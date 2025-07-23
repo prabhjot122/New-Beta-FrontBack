@@ -1,0 +1,108 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: lawvriksh-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Sahil123}
+      MYSQL_DATABASE: ${DB_NAME:-lawvriksh_referral}
+      MYSQL_USER: ${DB_USER:-lawvriksh_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-Sahil123}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    ports:
+      - "127.0.0.1:3307:3306"
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --max_connections=200
+      --innodb_buffer_pool_size=512M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-Sahil123}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - lawvriksh-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    container_name: lawvriksh-backend
+    restart: unless-stopped
+    environment:
+      # Database Configuration
+      DATABASE_URL: mysql+pymysql://${DB_USER:-lawvriksh_user}:${DB_PASSWORD:-Sahil123}@mysql:3306/${DB_NAME:-lawvriksh_referral}
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-lawvriksh_referral}
+      DB_USER: ${DB_USER:-lawvriksh_user}
+      DB_PASSWORD: ${DB_PASSWORD:-Sahil123}
+      
+      # Security
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-your_jwt_secret_key_here_change_in_production}
+      
+      # Admin Configuration
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-sahilsaurav2507@gmail.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Sahil@123}
+      
+      # Application Settings
+      ENVIRONMENT: production
+      DEBUG: "false"
+      PYTHONPATH: /app
+      
+      # Domain Configuration
+      DOMAIN: lawvriksh.com
+      API_BASE_URL: https://lawvriksh.com/api
+      FRONTEND_URL: https://lawvriksh.com
+      
+      # CORS Settings
+      ALLOWED_ORIGINS: "https://lawvriksh.com,https://www.lawvriksh.com"
+      
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - lawvriksh-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+
+  frontend:
+    image: nginx:alpine
+    container_name: lawvriksh-frontend
+    restart: unless-stopped
+    volumes:
+      - ./Frontend/dist:/usr/share/nginx/html:ro
+      - ./nginx-frontend-production.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "127.0.0.1:3000:80"
+    networks:
+      - lawvriksh-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+
+networks:
+  lawvriksh-network:
+    driver: bridge
